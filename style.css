@@ -284,3 +284,48 @@ button:hover {
 .close:hover {
     color: var(--color-negative);
 }
+
+/*Slides Section*/
+.slide {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 50px 1fr 100px;
+    gap: 10px;
+}
+
+.slide .header {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.slide .input-img {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    box-shadow: var(--box-shadow);
+}
+
+.slide .prediction-img {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+
+    box-shadow: var(--box-shadow);
+}
+
+.slide .explanation-img {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    box-shadow: var(--box-shadow);
+}
+
+img {
+    max-height: 100%;
+    max-width: 100%;
+}
