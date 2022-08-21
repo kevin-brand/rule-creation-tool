@@ -10,10 +10,12 @@
     --color-magnitude: #f06292;
     --color-positive: #69f0ae;
     --color-negative: #f50057;
+    --color-effect: #69f0ae;
 
     --color-shadow: rgba(132, 139, 200, 0.18);
     --color-background: #f6f6f9;
     --color-card: #fff;
+    --color-muted: rgb(237, 237, 237);
 
     --card-border-radius: 1.5rem;
     --border-radius-1: 0.4rem;
@@ -22,8 +24,55 @@
 
     --card-padding: 1.8rem;
     --padding-1: 1.2rem;
+    --padding-2: 1.0rem;
+    --padding-3: 0.8rem;
 
     --box-shadow: 0 0.4rem 1rem var(--color-shadow);
+}
+
+.feature {
+    border-color: var(--color-feature);
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    background: var(--color-feature);
+}
+
+.value {
+    border-color: var(--color-value);
+    transition: all 0.3s ease;
+}
+
+.value:hover {
+    background: var(--color-value);
+}
+
+.comparison {
+    border-color: var(--color-comparison);
+    transition: all 0.3s ease;
+}
+
+.comparison:hover {
+    background: var(--color-comparison);
+}
+
+.magnitude {
+    border-color: var(--color-magnitude);
+    transition: all 0.3s ease;
+}
+
+.magnitude:hover {
+    background: var(--color-magnitude);
+}
+
+.effect {
+    border-color: var(--color-effect);
+    transition: all 0.3s ease;
+}
+
+.effect:hover {
+    background: var(--color-effect);
 }
 
 
@@ -42,6 +91,20 @@ html {
     font-size: 14px;
 }
 
+::-webkit-scrollbar {
+    width: 1vw;
+    height: 1vw;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 body {
     font-family: roboto, sans-serif;
     font-size: 0.88rem;
@@ -51,6 +114,12 @@ body {
 li, a, button {
     font-weight: 800;
     font-size: 1.4rem;
+    color: var(--color-dark-text);
+}
+
+p {
+    font-weight: 500;
+    font-size: 1.2rem;
     color: var(--color-dark-text);
 }
 
@@ -73,13 +142,26 @@ h4 {
     font-size: 0.8rem;
 }
 
+select, input {
+    border: black dashed 2px;
+    padding: var(--padding-3);
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: var(--border-radius-2);
+}
+
+select:hover {
+    cursor: pointer;
+}
+
 #layout-master {
     width: 100vw;
     height: 100vh;
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 50px 1fr 1fr;
 
     gap: 10px;
@@ -89,7 +171,7 @@ h4 {
 
 #header {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 5;
 }
 
 #slide-1 {
@@ -106,7 +188,7 @@ h4 {
 
 #rules {
     grid-column-start: 3;
-    grid-column-end: 4;
+    grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: span 2;
 }
@@ -127,15 +209,78 @@ h4 {
     padding: 30px 10%;
 }
 
-#pause-button {
+button {
     padding: 9px 25px;
     border: 2px dashed var(--color-primary);
     border-radius: var(--card-border-radius);
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    background-color: transparent;
 }
 
-#pause-button:hover {
+button:hover {
     background-color: var(--color-primary);
     color: #fff;
+}
+
+/*Rule Section*/
+
+#rules {
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 50px 1fr 75px;
+    gap: 10px;
+    padding: 10px;
+}
+
+#rules .header {
+    margin: 10px 0px 0px 20px;
+}
+
+#rules .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-group {
+    padding: var(--card-padding);
+    overflow: scroll;
+}
+
+.list-group .list-group-item {
+    display: flex;
+    box-shadow: var(--box-shadow);
+    justify-content: space-between;
+}
+
+.rule {
+    gap: 0.5rem;
+}
+
+.list-group .list-group-item > div {
+    padding: 10px 0px;
+}
+
+.list-group .list-group-item .handle {
+    width: 50px;
+    cursor: pointer;
+    background: var(--color-muted);
+}
+
+.close {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 50px;
+}
+
+.close:hover {
+    color: var(--color-negative);
 }
