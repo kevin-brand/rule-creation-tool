@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
+    --color-primary: #7380ec;
     --color-dark-text: #363949;
 
     --color-feature: #b3e5fc;
@@ -45,6 +46,12 @@ body {
     font-family: roboto, sans-serif;
     font-size: 0.88rem;
     background: var(--color-background);
+}
+
+li, a, button {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--color-dark-text);
 }
 
 h1 {
@@ -109,4 +116,26 @@ h4 {
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
+}
+
+/**HEADER**/
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+#pause-button {
+    padding: 9px 25px;
+    border: 2px dashed var(--color-primary);
+    border-radius: var(--card-border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#pause-button:hover {
+    background-color: var(--color-primary);
+    color: #fff;
 }
