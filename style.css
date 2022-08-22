@@ -253,6 +253,9 @@ button:hover {
 .list-group {
     padding: var(--card-padding);
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .list-group .list-group-item {
@@ -272,7 +275,7 @@ button:hover {
 .list-group .list-group-item .handle {
     width: 50px;
     cursor: pointer;
-    background: var(--color-muted);
+    background: var(--color-primary);
 }
 
 .close {

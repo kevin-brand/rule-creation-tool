@@ -17,12 +17,12 @@
     <section id="layout-master">
         <div id="header">
             <h1 id="round-display">Round: 01/10</h1>
-            <h1 id="time-display">Time: 05:00</h1>
+            <h1 id="time-display">Time: 03:00</h1>
             <a class="cta" href="#"><button id="pause-button">Pause</button></a>
         </div>
 
         <div id="slide-1" class="slide card container">
-            <h1 class="title-1">Input and Pridiction</h1>
+            <h1 class="title-1">Input and Prediction</h1>
             <h1 class="title-2">Explanation</h1>
             <img class="input-img" src="./resources/inputs.png">
             <img class="prediction-img" src="./resources/output.png">
@@ -30,7 +30,7 @@
         </div>
 
         <div id="slide-2" class="slide card container">
-            <h1 class="title-1">Input and Pridiction</h1>
+            <h1 class="title-1">Input and Prediction</h1>
             <h1 class="title-2">Explanation</h1>
             <img class="input-img" src="./resources/inputs.png">
             <img class="prediction-img" src="./resources/output.png">
@@ -40,62 +40,8 @@
         <div id="rules" class="card container">
             <div class="header"><h1>Rules</h1></div>
             <div class="list-group" id="rule-list">
-                <div class="list-group-item">
-                    <div class="handle flex-center">
-                        <span class="material-symbols-sharp">
-                            menu
-                        </span>
-                    </div>
-                    <div class="rule flex-center">
-                        <p>if</p>
-                        
-                        <select class="feature" name="feature">
-                            <option>FEATURE #1</option>
-                            <option>FEATURE #2</option>
-                        </select>
-
-                        <p>is</p>
-                        
-                        <select class="comparison" name="comparison">
-                            <option>GREATER</option>
-                            <option>GREATER EQUAL</option>
-                            <option>EQUAL</option>
-                            <option>NOT EQUAL</option>
-                            <option>LESS</option>
-                            <option>LESS EQUAL</option>
-                        </select>
-
-                        <p>than</p>
-                        
-                        <input class="value" type="text" list="features" />
-                        <datalist id="features">
-                            <option>FEATURE #1</option>
-                            <option>FEATURE #2</option>
-                        </datalist>
-
-                        <p>then</p>
-                        
-                        <select class="magnitude" name="magnitude">
-                            <option>STRONG</option>
-                            <option>WEAK</option>
-                            <option>-</option>
-                        </select>
-
-                        <select class="effect" name="effect">
-                            <option>POSITIVE</option>
-                            <option>NEGATIVE</option>
-                        </select>
-
-                        <p>effect</p>
-                    </div>
-                    <div class="flex-center close">
-                        <span class="material-symbols-sharp">
-                            close
-                        </span>
-                    </div>
-                </div>
             </div>
-            <div class="footer"><a class="cta" href="#"><button>Add New Rule</button></a></div>
+            <div class="footer"><a class="cta" href="#" id="add-new-rule-button"><button>Add New Rule</button></a></div>
             
         </div>
     </section>
