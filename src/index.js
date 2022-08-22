@@ -1,6 +1,13 @@
 
-let rulesList = document.querySelector("#rule-list")
-let addRuleButton = document.querySelector('#add-new-rule-button')
+const roundDisplay = document.querySelector('#round-display')
+const timeDisplay = document.querySelector('#time-display')
+const pauseButton = document.querySelector('#pause-button')
+const rulesList = document.querySelector("#rule-list")
+const addRuleButton = document.querySelector('#add-new-rule-button')
+const slideOne = document.querySelector('#slide-1')
+const slideTwo = document.querySelector('#slide-2')
+
+let currentRound = 1
 
 new Sortable(rulesList, {
     handle: '.handle',
@@ -10,6 +17,23 @@ new Sortable(rulesList, {
 addRuleButton.addEventListener('click', () => {
     addRule();
 })
+
+fetchConfig();
+
+function fetchConfig() {
+    fetch('./config.json')
+    .then(response => response.json())
+    .then(data => setupTest(data))
+}
+
+function setupTest(data) {
+    let numberofRounds = data.rounds.length;
+    let roundDuration = data.duration; 
+
+    roundDisplay.innerHTML = "Round: " + currentRound.toString() + "/" + numberofRounds.toString()
+    timeDisplay.innerHTML = "Time: " + roundDuration.toString() + "s"
+
+}
 
 function addRule() {
     let listGroupItem = document.createElement('div')

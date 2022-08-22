@@ -2,6 +2,7 @@
 
 :root {
     --color-primary: #7380ec;
+    --color-primary-dark: #6b71a9;
     --color-dark-text: #363949;
 
     --color-feature: #b3e5fc;
@@ -91,17 +92,22 @@ html {
     font-size: 14px;
 }
 
-::-webkit-scrollbar {
-    width: 1vw;
-    height: 1vw;
+#rule-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+#rule-list::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-1);
+}
+
+#rule-list::-webkit-scrollbar-thumb:hover {
+    background-color: var( --color-primary-dark);
     cursor: pointer;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary);
-}
-
-::-webkit-scrollbar-track {
+#rule-list::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
@@ -158,7 +164,6 @@ select:hover {
 #layout-master {
     width: 100vw;
     height: 100vh;
-
     display: grid;
 
     grid-template-columns: repeat(4, 1fr);
@@ -292,7 +297,7 @@ button:hover {
 .slide {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 50px 1fr 100px;
+    grid-template-rows: 50px 1fr 75px;
     gap: 10px;
 }
 

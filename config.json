@@ -1,0 +1,29 @@
+{
+    "duration": 180,
+    "rounds": [
+        {
+            "input-1": "./resources/input.png",
+            "prediction-1": "./resources/output.png",
+            "explanation-1": "./resources/explanation.png",
+            "input-2": "./resources/input.png",
+            "prediction-2": "./resources/output.png",
+            "explanation-2": "./resources/explanation.png"
+        },
+        {
+            "input-1": "./resources/input.png",
+            "prediction-1": "./resources/output.png",
+            "explanation-1": "./resources/explanation.png",
+            "input-2": "./resources/input.png",
+            "prediction-2": "./resources/output.png",
+            "explanation-2": "./resources/explanation.png"
+        },
+        {
+            "input-1": "./resources/input.png",
+            "prediction-1": "./resources/output.png",
+            "explanation-1": "./resources/explanation.png",
+            "input-2": "./resources/input.png",
+            "prediction-2": "./resources/output.png",
+            "explanation-2": "./resources/explanation.png"
+        }
+    ] 
+}
