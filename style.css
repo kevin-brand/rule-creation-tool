@@ -27,6 +27,8 @@
     --padding-1: 1.2rem;
     --padding-2: 1.0rem;
     --padding-3: 0.8rem;
+    --padding-4: 0.6rem;
+    --padding-5: 0.4rem;
 
     --box-shadow: 0 0.4rem 1rem var(--color-shadow);
 }
@@ -271,7 +273,6 @@ button:hover {
 }
 
 .list-group {
-    padding: var(--card-padding);
     overflow: scroll;
     display: flex;
     flex-direction: column;
@@ -282,6 +283,10 @@ button:hover {
     display: flex;
     box-shadow: var(--box-shadow);
     justify-content: space-between;
+}
+
+input {
+    text-align: center;
 }
 
 .rule {
@@ -351,4 +356,48 @@ button:hover {
 img {
     max-height: 100%;
     max-width: 100%;
+}
+
+@media all and (max-width: 2349px) {
+
+    select, input {
+        border: black solid 2px;
+        padding: var(--padding-5);
+        text-align: center;
+        font-weight: 800;
+        font-size: 0.8rem;
+        border-radius: var(--border-radius-2);
+    }
+    
+    select:hover {
+        cursor: pointer;
+    }
+
+    .list-group .list-group-item p {
+        font-size: 1rem;
+    }
+    
+    .rule {
+        gap: 0.2rem;
+    }
+    
+    .list-group .list-group-item > div {
+        padding: 5px 0px;
+    }
+    
+    .list-group .list-group-item .handle {
+        width: 25px;
+        cursor: pointer;
+        background: var(--color-primary);
+    }
+
+    .close {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        width: 50px;
+    }
+    
+    .close:hover {
+        color: var(--color-negative);
+    }
 }
