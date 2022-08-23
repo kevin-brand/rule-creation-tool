@@ -41,7 +41,7 @@ new Sortable(rulesList, {
 
 startButton.addEventListener('click', () => {
     fetchConfig();
-    startOverlay.style.display = 'none';
+    startOverlay.classList.add('hidden');
 })
 
 addRuleButton.addEventListener('click', () => {
