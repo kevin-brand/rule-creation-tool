@@ -1,29 +1,34 @@
 {
     "duration": 180,
+    "features": [
+        "alcohol",
+        "chlorides",
+        "citric acid",
+        "density",
+        "fixed acidity",
+        "free sulfur dioxide",
+        "pH",
+        "residual sugar",
+        "sulphates",
+        "total sulfur dioxide",
+        "volatile acidity"
+    ],
     "rounds": [
         {
-            "input-1": "./resources/input.png",
-            "prediction-1": "./resources/output.png",
-            "explanation-1": "./resources/explanation.png",
-            "input-2": "./resources/input.png",
-            "prediction-2": "./resources/output.png",
-            "explanation-2": "./resources/explanation.png"
+            "input1": "./resources/inputs.png",
+            "prediction1": "./resources/output.png",
+            "explanation1": "./resources/explanation.png",
+            "input2": "./resources/inputs.png",
+            "prediction2": "./resources/output.png",
+            "explanation2": "./resources/explanation.png"
         },
         {
-            "input-1": "./resources/input.png",
-            "prediction-1": "./resources/output.png",
-            "explanation-1": "./resources/explanation.png",
-            "input-2": "./resources/input.png",
-            "prediction-2": "./resources/output.png",
-            "explanation-2": "./resources/explanation.png"
-        },
-        {
-            "input-1": "./resources/input.png",
-            "prediction-1": "./resources/output.png",
-            "explanation-1": "./resources/explanation.png",
-            "input-2": "./resources/input.png",
-            "prediction-2": "./resources/output.png",
-            "explanation-2": "./resources/explanation.png"
+            "input1": "./resources/inputs.png",
+            "prediction1": "./resources/output.png",
+            "explanation1": "./resources/explanation.png",
+            "input2": "./resources/inputs.png",
+            "prediction2": "./resources/output.png",
+            "explanation2": "./resources/explanation.png"
         }
     ] 
 }

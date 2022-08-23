@@ -205,6 +205,21 @@ select:hover {
     box-shadow: var(--box-shadow);
 }
 
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-card);
+    z-index: 999;
+    position: absolute;
+    transition: all 1s ease;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /**HEADER**/
 
 #header {
