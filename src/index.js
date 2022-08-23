@@ -1,6 +1,9 @@
 const startOverlay = document.querySelector('#start-screen')
 const startButton = document.querySelector('#start-button')
 
+const pauseOverlay = document.querySelector('#pause-screen')
+const resumeButton = document.querySelector('#resume-button')
+
 const imageModal = document.querySelector('#image-modal')
 const imageModalModal = document.querySelector('#image-modal .modal')
 const imageModalImage = document.querySelector('#image-modal .modal img')
@@ -49,6 +52,14 @@ imageModalModal.addEventListener('click', () => {
     hideImageModal()
 })
 
+pauseButton.addEventListener('click', () => {
+    pause()
+})
+
+resumeButton.addEventListener('click', () => {
+    unpause()
+})
+
 
 function fetchConfig() {
     fetch('./config.json')
@@ -80,6 +91,17 @@ function updateDisplays() {
     let numberOfRoundsText = (numberofRounds < 10) ? '0' + numberofRounds : numberofRounds.toString()
     roundDisplay.innerHTML = "Round: " + currentRoundText + "/" + numberOfRoundsText
     timeDisplay.innerHTML = "Time: " + roundDuration.toString() + "s"
+}
+
+function pause() {
+    console.log('pause')
+    pauseOverlay.classList.remove('hidden')
+    clearInterval(updateTimerID)
+}
+
+function unpause() {
+    pauseOverlay.classList.add('hidden')
+    updateTimerID = setInterval(updateTimer, 1000)
 }
 
 function hideImageModal() {
