@@ -227,7 +227,17 @@ function createClose() {
 
     close.appendChild(span)
 
+    close.addEventListener('click', () => {
+        let parent = findParentWithClass(close, 'list-group-item')
+        parent.remove()
+    })
+
     return close
+}
+
+function findParentWithClass(element, className) {
+    while ((element = element.parentElement) && !element.classList.contains(className));
+    return element;
 }
 
 function createRule() {
