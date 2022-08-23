@@ -317,7 +317,7 @@ input {
 .slide {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 50px 1fr 75px;
+    grid-template-rows: 50px 1fr;
     gap: 10px;
 }
 
@@ -336,16 +336,7 @@ input {
 }
 
 .slide .prediction-img {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 3;
-    grid-row-end: 4;
-
-    box-shadow: var(--box-shadow);
-}
-
-.slide .explanation-img {
-    grid-column-start: 2;
+    grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
@@ -353,9 +344,26 @@ input {
     box-shadow: var(--box-shadow);
 }
 
+.slide .explanation-img {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+    box-shadow: var(--box-shadow);
+}
+
 img {
-    max-height: 100%;
+    transform: scale(1);
     max-width: 100%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+img:hover {
+    transform: scale(1.2);
+    z-index: 999;
 }
 
 @media all and (max-width: 2349px) {
