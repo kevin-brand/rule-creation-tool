@@ -14,9 +14,16 @@
     <script defer src="./src/index.js"></script>
 </head>
 <body>
-    <section id="start-screen" class="overlay container">
+    <section id="start-screen" class="opaque overlay container">
         <a class="cta" href="#" id="start-button"><button>Start</button></a>
     </section>
+
+    <section id="image-modal" class="transparent overlay container hidden">
+        <div class="modal">
+            <img src="">
+        </div>
+    </section>
+
     <section id="layout-master">
         <div id="header">
             <h1 id="round-display">Round: 01/10</h1>
@@ -37,7 +44,7 @@
             <h1 class="title-1">Input and Prediction</h1>
             <h1 class="title-2">Explanation</h1>
             <h1 class="title-2">Prediction</h1>
-            <img class="input-img" src="">
+            <img class="input-img expandable-img" src="">
             <img class="prediction-img" src="">
             <img class="explanation-img" src="">
         </div>

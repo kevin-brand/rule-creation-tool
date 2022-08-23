@@ -1,5 +1,11 @@
 const startOverlay = document.querySelector('#start-screen')
 const startButton = document.querySelector('#start-button')
+
+const imageModal = document.querySelector('#image-modal')
+const imageModalModal = document.querySelector('#image-modal .modal')
+const imageModalImage = document.querySelector('#image-modal .modal img')
+
+
 const roundDisplay = document.querySelector('#round-display')
 const timeDisplay = document.querySelector('#time-display')
 const pauseButton = document.querySelector('#pause-button')
@@ -39,6 +45,10 @@ addRuleButton.addEventListener('click', () => {
     addRule();
 })
 
+imageModalModal.addEventListener('click', () => {
+    hideImageModal()
+})
+
 
 function fetchConfig() {
     fetch('./config.json')
@@ -72,40 +82,72 @@ function updateDisplays() {
     timeDisplay.innerHTML = "Time: " + roundDuration.toString() + "s"
 }
 
+function hideImageModal() {
+    imageModal.classList.add('hidden')
+}
+
+function displayImageFull(src) {
+    let displayImage = new Image()
+    displayImage.onload = function() {
+        imageModalImage.src = this.src
+    }
+    displayImage.src = src
+
+    imageModal.classList.remove('hidden')
+}
+
 function loadSlideContents() {
     let newInputImg1 = new Image()
     newInputImg1.onload = function() {
         slideOneInput.src = this.src
+        slideOneInput.addEventListener('click', () => {
+            displayImageFull(slideOneInput.src)
+        })
     }
     newInputImg1.src = testConfig.rounds[currentRound].input1;
 
     let newPredictionImg1 = new Image()
     newPredictionImg1.onload = function() {
         slideOnePrediction.src = this.src
+        slideOnePrediction.addEventListener('click', () => {
+            displayImageFull(slideOnePrediction.src)
+        })
     }
     newPredictionImg1.src = testConfig.rounds[currentRound].prediction1;
 
     let newExplanationImg1 = new Image()
     newExplanationImg1.onload = function() {
         slideOneExplanation.src = this.src
+        slideOneExplanation.addEventListener('click', () => {
+            displayImageFull(slideOneExplanation.src)
+        })
     }
     newExplanationImg1.src = testConfig.rounds[currentRound].explanation1;
 
     let newInputImg2 = new Image()
     newInputImg2.onload = function() {
         slideTwoInput.src = this.src
+        slideTwoInput.addEventListener('click', () => {
+            displayImageFull(slideTwoInput.src)
+        })
     }
     newInputImg2.src = testConfig.rounds[currentRound].input2;
 
     let newPredictionImg2 = new Image()
     newPredictionImg2.onload = function() {
         slideTwoPrediction.src = this.src
+        slideTwoPrediction.addEventListener('click', () => {
+            displayImageFull(slideTwoPrediction.src)
+        })
     }
     newPredictionImg2.src = testConfig.rounds[currentRound].prediction2;
 
     let newExplanationImg2 = new Image()
     newExplanationImg2.onload = function() {
         slideTwoExplanation.src = this.src
+        slideTwoExplanation.addEventListener('click', () => {
+            displayImageFull(slideTwoExplanation.src)
+        })
     }
     newExplanationImg2.src = testConfig.rounds[currentRound].explanation2;
 }

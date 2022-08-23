@@ -210,16 +210,49 @@ select:hover {
 .overlay {
     width: 100vw;
     height: 100vh;
-    background: var(--color-card);
     z-index: 999;
-    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
     transition: all 1s ease;
+}
+
+.opaque {
+    background-color: var(--color-card);
+}
+
+.transparent {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.modal {
+    background-color: #fff;
+    max-width: fit-content;
+    max-width: 100%;
+    padding: var(--card-padding);
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.modal img {
+    max-width: fit-content;
+}
+
+.modal:hover {
+    transform: scale(0.8);
+}
+
+.hidden {
+    display: none !important;
+    z-index: -999;
 }
 
 /**HEADER**/
@@ -353,7 +386,7 @@ input {
     box-shadow: var(--box-shadow);
 }
 
-img {
+.slide img {
     transform: scale(1);
     max-width: 100%;
     transition: all 0.3s ease;
@@ -361,7 +394,7 @@ img {
     z-index: 1;
 }
 
-img:hover {
+.slide img:hover {
     transform: scale(1.2);
     z-index: 999;
 }
