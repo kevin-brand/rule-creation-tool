@@ -32,7 +32,7 @@ let roundDuration
 let roundTimeLeft
 let updateTimerID
 
-let testConfig;
+let config;
 
 new Sortable(rulesList, {
     handle: '.handle',
@@ -54,6 +54,7 @@ imageModalModal.addEventListener('click', () => {
 
 pauseButton.addEventListener('click', () => {
     pause()
+    saveRules()
 })
 
 resumeButton.addEventListener('click', () => {
@@ -70,8 +71,29 @@ function saveRules() {
     });
 
     console.log(rules)
+    sendRulesViaEmail(rules)
 }
 
+function sendRulesViaEmail(rules) {
+    if (!config.sendEmail)
+        return
+
+    let rulesJSON = JSON.stringify(rules)
+
+    /**TODO
+     * FIND SOME WAY TO EMAIL ME THE JSON
+     */
+
+     const serviceID = config.serviceID;
+     const templateID = config.templateID;
+  
+     emailjs.send(serviceID, templateID, {message: rulesJSON})
+      .then(() => {
+        alert('Sent E-Mail!');
+      }, (err) => {
+        alert(JSON.stringify(err));
+      });
+}
 
 function convertRuleToObject(ruleElement) {
     let featureSelect = ruleElement.querySelector('.feature')
@@ -98,11 +120,13 @@ function fetchConfig() {
 }
 
 function setupTest(data) {
-    testConfig = data
+    config = data
 
-    numberofRounds = testConfig.rounds.length;
+    emailjs.init(config.emailjsKey)
+
+    numberofRounds = config.rounds.length;
     currentRound = -1;
-    roundDuration = testConfig.duration; 
+    roundDuration = config.duration; 
 
     startRound()
 }
@@ -156,7 +180,7 @@ function loadSlideContents() {
             displayImageFull(slideOneInput.src)
         })
     }
-    newInputImg1.src = testConfig.rounds[currentRound].input1;
+    newInputImg1.src = config.rounds[currentRound].input1;
 
     let newPredictionImg1 = new Image()
     newPredictionImg1.onload = function() {
@@ -165,7 +189,7 @@ function loadSlideContents() {
             displayImageFull(slideOnePrediction.src)
         })
     }
-    newPredictionImg1.src = testConfig.rounds[currentRound].prediction1;
+    newPredictionImg1.src = config.rounds[currentRound].prediction1;
 
     let newExplanationImg1 = new Image()
     newExplanationImg1.onload = function() {
@@ -174,7 +198,7 @@ function loadSlideContents() {
             displayImageFull(slideOneExplanation.src)
         })
     }
-    newExplanationImg1.src = testConfig.rounds[currentRound].explanation1;
+    newExplanationImg1.src = config.rounds[currentRound].explanation1;
 
     let newInputImg2 = new Image()
     newInputImg2.onload = function() {
@@ -183,7 +207,7 @@ function loadSlideContents() {
             displayImageFull(slideTwoInput.src)
         })
     }
-    newInputImg2.src = testConfig.rounds[currentRound].input2;
+    newInputImg2.src = config.rounds[currentRound].input2;
 
     let newPredictionImg2 = new Image()
     newPredictionImg2.onload = function() {
@@ -192,7 +216,7 @@ function loadSlideContents() {
             displayImageFull(slideTwoPrediction.src)
         })
     }
-    newPredictionImg2.src = testConfig.rounds[currentRound].prediction2;
+    newPredictionImg2.src = config.rounds[currentRound].prediction2;
 
     let newExplanationImg2 = new Image()
     newExplanationImg2.onload = function() {
@@ -201,7 +225,7 @@ function loadSlideContents() {
             displayImageFull(slideTwoExplanation.src)
         })
     }
-    newExplanationImg2.src = testConfig.rounds[currentRound].explanation2;
+    newExplanationImg2.src = config.rounds[currentRound].explanation2;
 }
 
 function updateTimer() {
@@ -276,14 +300,14 @@ function createRule() {
     ruleDiv.classList.add('flex-center')
 
     let ifP = createPElement('if')
-    let featureSelect = createSelectElement('feature', 'feature', testConfig.features)
+    let featureSelect = createSelectElement('feature', 'feature', config.features)
     //let isP = createPElement('is')
     let comparisonSelect = createSelectElement(
         'comparison', 
         'comparison', 
         ['GREATER', 'GREATER EQUAL', 'EQUAL', 'NOT EQUAL', 'LESS', 'LESS EQUAL']
     )
-    let valueInputElement = createDataListInputElement('value', 'features', testConfig.features)
+    let valueInputElement = createDataListInputElement('value', 'features', config.features)
     let thenP = createPElement('then')
     let magnitudeSelect = createSelectElement('magnitude', 'magnitude', ['WEAK', 'STRONG'])
     let effectSelect = createSelectElement('effect', 'effect', ['POSITIVE', 'NEGATIVE'])

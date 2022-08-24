@@ -1,4 +1,8 @@
 {
+    "sendEmail": true,
+    "emailjsKey": "iLC-VgUQbWSLzZTdM",
+    "serviceID": "default_service",
+    "templateID": "template_9cihs1o",
     "duration": 180,
     "features": [
         "alcohol",
