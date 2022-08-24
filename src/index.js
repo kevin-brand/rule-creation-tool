@@ -60,6 +60,36 @@ resumeButton.addEventListener('click', () => {
     unpause()
 })
 
+function saveRules() {
+    let ruleElements = document.querySelectorAll('.rule')
+    let rules = []
+
+
+    ruleElements.forEach(ruleElemet => {
+        rules.push(convertRuleToObject(ruleElemet))
+    });
+
+    console.log(rules)
+}
+
+
+function convertRuleToObject(ruleElement) {
+    let featureSelect = ruleElement.querySelector('.feature')
+    let comparisonSelect = ruleElement.querySelector('.comparison')
+    let valueInputElement = ruleElement.querySelector('.value')
+    let magnitudeSelect = ruleElement.querySelector('.magnitude')
+    let effectSelect = ruleElement.querySelector('.effect')
+
+    let rule = {
+        feature: featureSelect.options[featureSelect.selectedIndex].value,
+        comparison: comparisonSelect.options[featureSelect.selectedIndex].value,
+        value: valueInputElement.value,
+        magnitude: magnitudeSelect.options[featureSelect.selectedIndex].value,
+        effect: effectSelect.options[featureSelect.selectedIndex].value
+    }
+
+    return rule
+}
 
 function fetchConfig() {
     fetch('./config.json')
@@ -285,6 +315,7 @@ function createSelectElement(className, name, options) {
 
     options.forEach(option => {
         let optionDOM = document.createElement('option')
+        optionDOM.setAttribute('value', option)
         optionDOM.appendChild(document.createTextNode(option.toString().toUpperCase()))
         select.appendChild(optionDOM)
     });
