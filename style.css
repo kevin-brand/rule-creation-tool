@@ -280,11 +280,21 @@ button {
     cursor: pointer;
     transition: all 0.3s ease 0s;
     background-color: transparent;
+    text-align: center;
 }
 
 button:hover {
     background-color: var(--color-primary);
     color: #fff;
+}
+
+#quit-button button {
+    margin-top: 150px;
+    border: 2px dashed var(--color-negative);
+}
+
+#quit-button button:hover {
+    background-color: var(--color-negative);
 }
 
 /*Rule Section*/

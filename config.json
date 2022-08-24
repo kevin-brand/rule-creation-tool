@@ -1,9 +1,9 @@
 {
-    "sendEmail": true,
+    "sendEmail": false,
     "emailjsKey": "iLC-VgUQbWSLzZTdM",
     "serviceID": "default_service",
     "templateID": "template_9cihs1o",
-    "duration": 180,
+    "duration": 10,
     "features": [
         "alcohol",
         "chlorides",
@@ -18,6 +18,14 @@
         "volatile acidity"
     ],
     "rounds": [
+        {
+            "input1": "./resources/inputs.png",
+            "prediction1": "./resources/output.png",
+            "explanation1": "./resources/explanation.png",
+            "input2": "./resources/inputs.png",
+            "prediction2": "./resources/output.png",
+            "explanation2": "./resources/explanation.png"
+        },
         {
             "input1": "./resources/inputs.png",
             "prediction1": "./resources/output.png",

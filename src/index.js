@@ -3,6 +3,7 @@ const startButton = document.querySelector('#start-button')
 
 const pauseOverlay = document.querySelector('#pause-screen')
 const resumeButton = document.querySelector('#resume-button')
+const quitButton = document.querySelector('#quit-button')
 
 const imageModal = document.querySelector('#image-modal')
 const imageModalModal = document.querySelector('#image-modal .modal')
@@ -53,7 +54,10 @@ imageModalModal.addEventListener('click', () => {
 })
 
 pauseButton.addEventListener('click', () => {
-    pause()
+    pause('Please focus your attention on the cross and press continue to resume the round.', true)
+})
+
+quitButton.addEventListener('click', () => {
     saveRules()
 })
 
@@ -70,7 +74,6 @@ function saveRules() {
         rules.push(convertRuleToObject(ruleElemet))
     });
 
-    console.log(rules)
     sendRulesViaEmail(rules)
 }
 
@@ -80,16 +83,12 @@ function sendRulesViaEmail(rules) {
 
     let rulesJSON = JSON.stringify(rules)
 
-    /**TODO
-     * FIND SOME WAY TO EMAIL ME THE JSON
-     */
-
      const serviceID = config.serviceID;
      const templateID = config.templateID;
   
      emailjs.send(serviceID, templateID, {message: rulesJSON})
       .then(() => {
-        alert('Sent E-Mail!');
+        alert('Data has been sent successfully. You can now close the site.');
       }, (err) => {
         alert(JSON.stringify(err));
       });
@@ -147,13 +146,17 @@ function updateDisplays() {
     timeDisplay.innerHTML = "Time: " + roundDuration.toString() + "s"
 }
 
-function pause() {
-    console.log('pause')
+function pause(text, showQuitButton = false) {
+    if (showQuitButton)
+        quitButton.classList.remove('hidden')
+
+    pauseOverlay.querySelector('h1').innerHTML = text
     pauseOverlay.classList.remove('hidden')
     clearInterval(updateTimerID)
 }
 
 function unpause() {
+    quitButton.classList.add('hidden')
     pauseOverlay.classList.add('hidden')
     updateTimerID = setInterval(updateTimer, 1000)
 }
@@ -242,6 +245,7 @@ function updateTimer() {
     if (roundTimeLeft < 0) {
         clearInterval(updateTimerID)
         startRound()
+        pause('Please focus your attention on the cross and press continue to start the next round.')
     }
 }
 
