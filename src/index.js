@@ -1,6 +1,8 @@
 const startOverlay = document.querySelector('#start-screen')
 const startButton = document.querySelector('#start-button')
 
+const endOverlay = document.querySelector('#end-screen')
+
 const pauseOverlay = document.querySelector('#pause-screen')
 const resumeButton = document.querySelector('#resume-button')
 const quitButton = document.querySelector('#quit-button')
@@ -133,10 +135,21 @@ function setupTest(data) {
 function startRound() {
     roundTimeLeft = roundDuration
     currentRound++
+
+    if (currentRound == numberofRounds) {
+        end()
+        return;
+    }
+
     updateDisplays()
     updateTimer()
     updateTimerID = setInterval(updateTimer, 1000)
     loadSlideContents()
+}
+
+function end() {
+    endOverlay.classList.remove('hidden')
+    saveRules()
 }
 
 function updateDisplays() {
@@ -244,8 +257,15 @@ function updateTimer() {
 
     if (roundTimeLeft < 0) {
         clearInterval(updateTimerID)
-        startRound()
-        pause('Please focus your attention on the cross and press continue to start the next round.')
+
+        if ((currentRound + 1) == numberofRounds) {
+            end()
+            return;
+        }
+        else {
+            startRound()
+            pause('Please focus your attention on the cross and press continue to start the next round.')
+        }
     }
 }
 
