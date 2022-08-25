@@ -42,5 +42,5 @@
             "prediction2": "./resources/output.png",
             "explanation2": "./resources/explanation.png"
         }
-    ] 
+    ]
 }

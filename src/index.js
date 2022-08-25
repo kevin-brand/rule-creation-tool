@@ -1,3 +1,10 @@
+/**
+ * This code was written by Kevin Brand
+ * E-mail: uffmu@kit.student.edu
+ * Mtrk. Nr.: 2115628
+ */
+
+// CONSTANTS
 const startOverlay = document.querySelector('#start-screen')
 const startButton = document.querySelector('#start-button')
 
@@ -29,6 +36,8 @@ const slideTwoInput = document.querySelector('#slide-2 .input-img')
 const slideTwoPrediction = document.querySelector('#slide-2 .prediction-img')
 const slideTwoExplanation = document.querySelector('#slide-2 .explanation-img')
 
+
+// VARIABLES
 let currentRound
 let numberofRounds
 let roundDuration
@@ -37,11 +46,16 @@ let updateTimerID
 
 let config;
 
+/**
+ * Converts the rules list into a sortable list.
+ * See sortable.js docs for more info
+ */
 new Sortable(rulesList, {
     handle: '.handle',
     animation: 200
 })
 
+// Adding Eventlisteners to buttons and attaching the related function
 startButton.addEventListener('click', () => {
     fetchConfig();
     startOverlay.classList.add('hidden');
@@ -67,6 +81,10 @@ resumeButton.addEventListener('click', () => {
     unpause()
 })
 
+
+/**
+ * Saves the rules in an object array and then attempts to E-Mail the rules
+ */
 function saveRules() {
     let ruleElements = document.querySelectorAll('.rule')
     let rules = []
@@ -79,23 +97,33 @@ function saveRules() {
     sendRulesViaEmail(rules)
 }
 
+/**
+ * Attempts to send an email with the rules array as JSON as the message
+ * @param {Rules Obnject} rules 
+ * @returns 
+ */
 function sendRulesViaEmail(rules) {
     if (!config.sendEmail)
         return
 
     let rulesJSON = JSON.stringify(rules)
 
-     const serviceID = config.serviceID;
-     const templateID = config.templateID;
-  
-     emailjs.send(serviceID, templateID, {message: rulesJSON})
-      .then(() => {
-        alert('Data has been sent successfully. You can now close the site.');
-      }, (err) => {
-        alert(JSON.stringify(err));
-      });
+    const serviceID = config.serviceID;
+    const templateID = config.templateID;
+
+    emailjs.send(serviceID, templateID, { message: rulesJSON })
+        .then(() => {
+            alert('Data has been sent successfully. You can now close the site.');
+        }, (err) => {
+            alert(JSON.stringify(err));
+        });
 }
 
+/**
+ * Extracts the values from the rule dom element and converts it into a javascript object
+ * @param {DOMElement} ruleElement 
+ * @returns Javascript Object Rule
+ */
 function convertRuleToObject(ruleElement) {
     let featureSelect = ruleElement.querySelector('.feature')
     let comparisonSelect = ruleElement.querySelector('.comparison')
@@ -114,12 +142,20 @@ function convertRuleToObject(ruleElement) {
     return rule
 }
 
+/**
+ * Fetches the config file and then calls the test setup
+ */
 function fetchConfig() {
     fetch('./config.json')
-    .then(response => response.json())
-    .then(data => setupTest(data))
+        .then(response => response.json())
+        .then(data => setupTest(data))
 }
 
+
+/**
+ * Sets up the test and then calls the first round to begin
+ * @param {JSON} data 
+ */
 function setupTest(data) {
     config = data
 
@@ -127,11 +163,14 @@ function setupTest(data) {
 
     numberofRounds = config.rounds.length;
     currentRound = -1;
-    roundDuration = config.duration; 
+    roundDuration = config.duration;
 
     startRound()
 }
 
+/**
+ * Starts a new round
+ */
 function startRound() {
     roundTimeLeft = roundDuration
     currentRound++
@@ -147,11 +186,17 @@ function startRound() {
     loadSlideContents()
 }
 
+/**
+ * Displays the End Screen and saves the rules
+ */
 function end() {
     endOverlay.classList.remove('hidden')
     saveRules()
 }
 
+/**
+ * Updates Number of Rounds Text
+ */
 function updateDisplays() {
     let currentRoundText = (currentRound < 10) ? '0' + (currentRound + 1) : currentRound.toString()
     let numberOfRoundsText = (numberofRounds < 10) ? '0' + numberofRounds : numberofRounds.toString()
@@ -159,6 +204,11 @@ function updateDisplays() {
     timeDisplay.innerHTML = "Time: " + roundDuration.toString() + "s"
 }
 
+/**
+ * Pauses the round and displays the pause screen dependent on the caller
+ * @param {string} text 
+ * @param {boolean} showQuitButton 
+ */
 function pause(text, showQuitButton = false) {
     if (showQuitButton)
         quitButton.classList.remove('hidden')
@@ -168,19 +218,29 @@ function pause(text, showQuitButton = false) {
     clearInterval(updateTimerID)
 }
 
+/**
+ * Unpauses the round
+ */
 function unpause() {
     quitButton.classList.add('hidden')
     pauseOverlay.classList.add('hidden')
     updateTimerID = setInterval(updateTimer, 1000)
 }
 
+/**
+ * Hides the image modal
+ */
 function hideImageModal() {
     imageModal.classList.add('hidden')
 }
 
+/**
+ * Displays the image in its full size
+ * @param {string} src 
+ */
 function displayImageFull(src) {
     let displayImage = new Image()
-    displayImage.onload = function() {
+    displayImage.onload = function () {
         imageModalImage.src = this.src
     }
     displayImage.src = src
@@ -188,9 +248,12 @@ function displayImageFull(src) {
     imageModal.classList.remove('hidden')
 }
 
+/**
+ * Loads the slide contents 
+ */
 function loadSlideContents() {
     let newInputImg1 = new Image()
-    newInputImg1.onload = function() {
+    newInputImg1.onload = function () {
         slideOneInput.src = this.src
         slideOneInput.addEventListener('click', () => {
             displayImageFull(slideOneInput.src)
@@ -199,7 +262,7 @@ function loadSlideContents() {
     newInputImg1.src = config.rounds[currentRound].input1;
 
     let newPredictionImg1 = new Image()
-    newPredictionImg1.onload = function() {
+    newPredictionImg1.onload = function () {
         slideOnePrediction.src = this.src
         slideOnePrediction.addEventListener('click', () => {
             displayImageFull(slideOnePrediction.src)
@@ -208,7 +271,7 @@ function loadSlideContents() {
     newPredictionImg1.src = config.rounds[currentRound].prediction1;
 
     let newExplanationImg1 = new Image()
-    newExplanationImg1.onload = function() {
+    newExplanationImg1.onload = function () {
         slideOneExplanation.src = this.src
         slideOneExplanation.addEventListener('click', () => {
             displayImageFull(slideOneExplanation.src)
@@ -217,7 +280,7 @@ function loadSlideContents() {
     newExplanationImg1.src = config.rounds[currentRound].explanation1;
 
     let newInputImg2 = new Image()
-    newInputImg2.onload = function() {
+    newInputImg2.onload = function () {
         slideTwoInput.src = this.src
         slideTwoInput.addEventListener('click', () => {
             displayImageFull(slideTwoInput.src)
@@ -226,7 +289,7 @@ function loadSlideContents() {
     newInputImg2.src = config.rounds[currentRound].input2;
 
     let newPredictionImg2 = new Image()
-    newPredictionImg2.onload = function() {
+    newPredictionImg2.onload = function () {
         slideTwoPrediction.src = this.src
         slideTwoPrediction.addEventListener('click', () => {
             displayImageFull(slideTwoPrediction.src)
@@ -235,7 +298,7 @@ function loadSlideContents() {
     newPredictionImg2.src = config.rounds[currentRound].prediction2;
 
     let newExplanationImg2 = new Image()
-    newExplanationImg2.onload = function() {
+    newExplanationImg2.onload = function () {
         slideTwoExplanation.src = this.src
         slideTwoExplanation.addEventListener('click', () => {
             displayImageFull(slideTwoExplanation.src)
@@ -244,6 +307,9 @@ function loadSlideContents() {
     newExplanationImg2.src = config.rounds[currentRound].explanation2;
 }
 
+/**
+ * Updates the timer starts a new round if the round timer reaches 0
+ */
 function updateTimer() {
     let minutes = Math.floor(roundTimeLeft / 60)
     let seconds = roundTimeLeft % 60
@@ -269,6 +335,10 @@ function updateTimer() {
     }
 }
 
+
+/**
+ * Adds a new rule dom element to the rules-list
+ */
 function addRule() {
     let listGroupItem = document.createElement('div')
     listGroupItem.classList.add(('list-group-item'))
@@ -280,6 +350,10 @@ function addRule() {
     rulesList.appendChild(listGroupItem)
 }
 
+/**
+ * Creates the handle for the rule DOM element
+ * @returns Handle
+ */
 function createHandle() {
     let handle = document.createElement('div')
     handle.classList.add('handle')
@@ -294,6 +368,10 @@ function createHandle() {
     return handle
 }
 
+/**
+ * Creates the close button for the rule DOM element
+ * @returns Close
+ */
 function createClose() {
     let close = document.createElement('div')
     close.classList.add('close')
@@ -305,6 +383,7 @@ function createClose() {
 
     close.appendChild(span)
 
+    // Adds ability to delete the attached rule
     close.addEventListener('click', () => {
         let parent = findParentWithClass(close, 'list-group-item')
         parent.remove()
@@ -313,11 +392,21 @@ function createClose() {
     return close
 }
 
+/**
+ * Finds the first parent of a child that has a class
+ * @param {DOMElement} element 
+ * @param {string} className 
+ * @returns 
+ */
 function findParentWithClass(element, className) {
     while ((element = element.parentElement) && !element.classList.contains(className));
     return element;
 }
 
+/**
+ * Creates the rule part of the rule...yeah, the naming is bad. 
+ * @returns The rule rule part
+ */
 function createRule() {
     let ruleDiv = document.createElement('div')
     ruleDiv.classList.add('rule')
@@ -325,10 +414,9 @@ function createRule() {
 
     let ifP = createPElement('if')
     let featureSelect = createSelectElement('feature', 'feature', config.features)
-    //let isP = createPElement('is')
     let comparisonSelect = createSelectElement(
-        'comparison', 
-        'comparison', 
+        'comparison',
+        'comparison',
         ['GREATER', 'GREATER EQUAL', 'EQUAL', 'NOT EQUAL', 'LESS', 'LESS EQUAL']
     )
     let valueInputElement = createDataListInputElement('value', 'features', config.features)
@@ -339,7 +427,6 @@ function createRule() {
 
     ruleDiv.appendChild(ifP)
     ruleDiv.appendChild(featureSelect)
-    //ruleDiv.appendChild(isP)
     ruleDiv.appendChild(comparisonSelect)
     ruleDiv.appendChild(valueInputElement)
     ruleDiv.appendChild(thenP)
@@ -350,12 +437,24 @@ function createRule() {
     return ruleDiv
 }
 
+/**
+ * Creates a p element with a specified text
+ * @param {string} text The text in the p element
+ * @returns the p elment with the specified text
+ */
 function createPElement(text) {
     let p = document.createElement('p')
     p.appendChild(document.createTextNode(text))
     return p
 }
 
+/**
+ * Creates a select element
+ * @param {string} className 
+ * @param {string} name 
+ * @param {Array} options 
+ * @returns Select with Options
+ */
 function createSelectElement(className, name, options) {
     let select = document.createElement('select')
     select.classList.add(className)
@@ -371,6 +470,13 @@ function createSelectElement(className, name, options) {
     return select;
 }
 
+/**
+ * Creates an input element and a data list, shouldn't it exist yet
+ * @param {string} className 
+ * @param {string} listName 
+ * @param {Array} dataList 
+ * @returns Input Element
+ */
 function createDataListInputElement(className, listName, dataList) {
     let input = document.createElement('input')
     input.classList.add(className)
