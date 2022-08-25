@@ -105,10 +105,10 @@ function convertRuleToObject(ruleElement) {
 
     let rule = {
         feature: featureSelect.options[featureSelect.selectedIndex].value,
-        comparison: comparisonSelect.options[featureSelect.selectedIndex].value,
+        comparison: comparisonSelect.options[comparisonSelect.selectedIndex].value,
         value: valueInputElement.value,
-        magnitude: magnitudeSelect.options[featureSelect.selectedIndex].value,
-        effect: effectSelect.options[featureSelect.selectedIndex].value
+        magnitude: magnitudeSelect.options[magnitudeSelect.selectedIndex].value,
+        effect: effectSelect.options[effectSelect.selectedIndex].value
     }
 
     return rule

@@ -1,5 +1,5 @@
 {
-    "sendEmail": false,
+    "sendEmail": true,
     "emailjsKey": "iLC-VgUQbWSLzZTdM",
     "serviceID": "default_service",
     "templateID": "template_9cihs1o",
