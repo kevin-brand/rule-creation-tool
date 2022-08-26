@@ -74,7 +74,7 @@ pauseButton.addEventListener('click', () => {
 })
 
 quitButton.addEventListener('click', () => {
-    saveRules()
+    end()
 })
 
 resumeButton.addEventListener('click', () => {

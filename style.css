@@ -222,6 +222,10 @@ select:hover {
     transition: all 0.5s ease;
 }
 
+#end-screen {
+    z-index: 9999;
+}
+
 .opaque {
     background-color: var(--color-card);
 }
