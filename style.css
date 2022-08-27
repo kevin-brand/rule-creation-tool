@@ -131,6 +131,12 @@ p {
     color: var(--color-dark-text);
 }
 
+label {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-dark-text);
+}
+
 h1 {
     font-weight: 800;
     font-size: 1.8rem;
@@ -165,7 +171,15 @@ select:hover {
 
 .info-text-wrapper {
     text-align: center;
-    max-width: 60%;
+    max-width: 500px;
+}
+
+.participant-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #layout-master {

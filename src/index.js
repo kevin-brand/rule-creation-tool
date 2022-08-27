@@ -45,6 +45,7 @@ let roundTimeLeft
 let updateTimerID
 
 let config;
+let userID;
 
 /**
  * Converts the rules list into a sortable list.
@@ -57,6 +58,22 @@ new Sortable(rulesList, {
 
 // Adding Eventlisteners to buttons and attaching the related function
 startButton.addEventListener('click', () => {
+    let userCode = ''
+    for (let i = 1; i < 5; i++) {
+        let selector = '#code-gen-' + i
+        userCode += document.querySelector(selector).value
+    }
+
+    if (userCode.length != 8) {
+        for (let i = 1; i < 5; i++) {
+            let selector = '#code-gen-' + i
+            document.querySelector(selector).value = ''
+        }
+        alert('Please enter a valid values into the textfields! Thank you.')
+        return
+    }
+
+    userID = userCode
     fetchConfig();
     startOverlay.classList.add('hidden');
 })
@@ -87,14 +104,18 @@ resumeButton.addEventListener('click', () => {
  */
 function saveRules() {
     let ruleElements = document.querySelectorAll('.rule')
-    let rules = []
-
+    let userRules = []
 
     ruleElements.forEach(ruleElemet => {
-        rules.push(convertRuleToObject(ruleElemet))
+        userRules.push(convertRuleToObject(ruleElemet))
     });
 
-    sendRulesViaEmail(rules)
+    let ruleOBJ = {
+        name: userID,
+        rules: userRules
+    }
+
+    sendRulesViaEmail(ruleOBJ)
 }
 
 /**
