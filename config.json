@@ -19,28 +19,84 @@
     ],
     "rounds": [
         {
-            "input1": "./resources/inputs.png",
-            "prediction1": "./resources/output.png",
-            "explanation1": "./resources/explanation.png",
-            "input2": "./resources/inputs.png",
-            "prediction2": "./resources/output.png",
-            "explanation2": "./resources/explanation.png"
+            "input1": "./resources/input-1-1.png",
+            "prediction1": "./resources/prediction-1-1.png",
+            "explanation1": "",
+            "input2": "./resources/input-1-2.png",
+            "prediction2": "./resources/prediction-1-2.png",
+            "explanation2": ""
         },
         {
-            "input1": "./resources/inputs.png",
-            "prediction1": "./resources/output.png",
-            "explanation1": "./resources/explanation.png",
-            "input2": "./resources/inputs.png",
-            "prediction2": "./resources/output.png",
-            "explanation2": "./resources/explanation.png"
+            "input1": "./resources/input-2-1.png",
+            "prediction1": "./resources/prediction-2-1.png",
+            "explanation1": "",
+            "input2": "./resources/input-2-2.png",
+            "prediction2": "./resources/prediction-2-2.png",
+            "explanation2": ""
         },
         {
-            "input1": "./resources/inputs.png",
-            "prediction1": "./resources/output.png",
-            "explanation1": "./resources/explanation.png",
-            "input2": "./resources/inputs.png",
-            "prediction2": "./resources/output.png",
-            "explanation2": "./resources/explanation.png"
+            "input1": "./resources/input-3-1.png",
+            "prediction1": "./resources/prediction-3-1.png",
+            "explanation1": "",
+            "input2": "./resources/input-3-2.png",
+            "prediction2": "./resources/prediction-3-2.png",
+            "explanation2": ""
+        },
+        {
+            "input1": "./resources/input-4-1.png",
+            "prediction1": "./resources/prediction-4-1.png",
+            "explanation1": "",
+            "input2": "./resources/input-4-2.png",
+            "prediction2": "./resources/prediction-4-2",
+            "explanation2": ""
+        },
+        {
+            "input1": "./resources/input-5-1.png",
+            "prediction1": "./resources/prediction-5-1.png",
+            "explanation1": "",
+            "input2": "./resources/input-5-2.png",
+            "prediction2": "./resources/prediction-5-2.png",
+            "explanation2": ""
+        },
+        {
+            "input1": "./resources/input-6-1.png",
+            "prediction1": "./resources/prediction-6-1.png",
+            "explanation1": "./resources/explanation-6-1.png",
+            "input2": "./resources/input-6-2.png",
+            "prediction2": "./resources/prediction-6-2.png",
+            "explanation2": "./resources/explanation-6-2.png"
+        },
+        {
+            "input1": "./resources/input-7-1.png",
+            "prediction1": "./resources/prediction-7-1.png",
+            "explanation1": "./resources/explanation-7-1.png",
+            "input2": "./resources/input-7-2.png",
+            "prediction2": "./resources/prediction-7-2.png",
+            "explanation2": "./resources/explanation-7-2.png"
+        },
+        {
+            "input1": "./resources/input-8-1.png",
+            "prediction1": "./resources/prediction-8-1.png",
+            "explanation1": "./resources/explanation-8-1.png",
+            "input2": "./resources/input-8-2.png",
+            "prediction2": "./resources/prediction-8-2.png",
+            "explanation2": "./resources/explanation-8-2.png"
+        },
+        {
+            "input1": "./resources/input-9-1.png",
+            "prediction1": "./resources/prediction-9-1.png",
+            "explanation1": "./resources/explanation-9-1.png",
+            "input2": "./resources/input-9-2.png",
+            "prediction2": "./resources/prediction-9-2.png",
+            "explanation2": "./resources/explanation-9-2.png"
+        },
+        {
+            "input1": "./resources/input-10-1.png",
+            "prediction1": "./resources/prediction-10-1.png",
+            "explanation1": "./resources/explanation-10-1.png",
+            "input2": "./resources/input-10-2.png",
+            "prediction2": "./resources/prediction-10-2.png",
+            "explanation2": "./resources/explanation-10-2.png"
         }
     ]
 }
