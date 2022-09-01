@@ -134,8 +134,11 @@ function sendRulesViaEmail(rules) {
 
     emailjs.send(serviceID, templateID, { message: rulesJSON })
         .then(() => {
-            alert('Data has been sent successfully. You can now close this site.');
-            document.querySelector('#sending-data-text').innerHTML = 'Data has been sent successfully. You can now close this site.'
+            alert('Data has been sent successfully. You can now continue');
+
+            if (currentRound === numberofRounds - 1) {
+                document.querySelector('#sending-data-text').innerHTML = 'Data has been sent successfully. You can now close this site.'
+            }
         }, (err) => {
             alert(JSON.stringify(err));
         });
@@ -220,7 +223,7 @@ function end() {
  * Updates Number of Rounds Text
  */
 function updateDisplays() {
-    let currentRoundText = ((currentRound + 1) < 10) ? '0' + (currentRound + 1) : currentRound.toString()
+    let currentRoundText = ((currentRound + 1) < 10) ? '0' + (currentRound + 1) : (currentRound + 1).toString()
     let numberOfRoundsText = (numberofRounds < 10) ? '0' + numberofRounds : numberofRounds.toString()
     roundDisplay.innerHTML = "Round: " + currentRoundText + "/" + numberOfRoundsText
     timeDisplay.innerHTML = "Time: " + roundDuration.toString() + "s"
@@ -234,6 +237,14 @@ function updateDisplays() {
 function pause(text, showQuitButton = false) {
     if (showQuitButton)
         quitButton.classList.remove('hidden')
+
+    if (currentRound == 5) {
+        pauseOverlay.querySelector('h1').innerHTML = "Results of the first Half are being sent...please wait a moment"
+        saveRules()
+        pauseOverlay.classList.remove('hidden')
+        clearInterval(updateTimerID)
+    }
+
 
     pauseOverlay.querySelector('h1').innerHTML = text
     pauseOverlay.classList.remove('hidden')
