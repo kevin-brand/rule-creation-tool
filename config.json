@@ -3,19 +3,18 @@
     "emailjsKey": "iLC-VgUQbWSLzZTdM",
     "serviceID": "default_service",
     "templateID": "template_9cihs1o",
-    "duration": 10,
+    "duration": 180,
     "features": [
-        "alcohol",
-        "chlorides",
-        "citric acid",
-        "density",
-        "fixed acidity",
-        "free sulfur dioxide",
-        "pH",
-        "residual sugar",
-        "sulphates",
-        "total sulfur dioxide",
-        "volatile acidity"
+        "CRIM",
+        "ZN",
+        "INDUS",
+        "RM",
+        "AGE",
+        "DIS",
+        "RAD",
+        "TAX",
+        "PTRATIO",
+        "LSTAT"
     ],
     "rounds": [
         {

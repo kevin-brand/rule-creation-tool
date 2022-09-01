@@ -134,7 +134,8 @@ function sendRulesViaEmail(rules) {
 
     emailjs.send(serviceID, templateID, { message: rulesJSON })
         .then(() => {
-            alert('Data has been sent successfully. You can now close the site.');
+            alert('Data has been sent successfully. You can now close this site.');
+            document.querySelector('#sending-data-text').innerHTML = 'Data has been sent successfully. You can now close this site.'
         }, (err) => {
             alert(JSON.stringify(err));
         });
@@ -219,7 +220,7 @@ function end() {
  * Updates Number of Rounds Text
  */
 function updateDisplays() {
-    let currentRoundText = (currentRound < 10) ? '0' + (currentRound + 1) : currentRound.toString()
+    let currentRoundText = ((currentRound + 1) < 10) ? '0' + (currentRound + 1) : currentRound.toString()
     let numberOfRoundsText = (numberofRounds < 10) ? '0' + numberofRounds : numberofRounds.toString()
     roundDisplay.innerHTML = "Round: " + currentRoundText + "/" + numberOfRoundsText
     timeDisplay.innerHTML = "Time: " + roundDuration.toString() + "s"
@@ -291,6 +292,15 @@ function loadSlideContents() {
     }
     newPredictionImg1.src = config.rounds[currentRound].prediction1;
 
+    // This means there is no explanation which means we must be in Round 1-5
+    if (config.rounds[currentRound].explanation1 === '') {
+        slideOneExplanation.classList.add('hidden')
+    }
+    else {
+        slideOneExplanation.classList.remove('hidden')
+    }
+
+
     let newExplanationImg1 = new Image()
     newExplanationImg1.onload = function () {
         slideOneExplanation.src = this.src
@@ -317,6 +327,15 @@ function loadSlideContents() {
         })
     }
     newPredictionImg2.src = config.rounds[currentRound].prediction2;
+
+
+    // This means there is no explanation which means we must be in Round 1-5
+    if (config.rounds[currentRound].explanation2 === '') {
+        slideTwoExplanation.classList.add('hidden')
+    }
+    else {
+        slideTwoExplanation.classList.remove('hidden')
+    }
 
     let newExplanationImg2 = new Image()
     newExplanationImg2.onload = function () {
