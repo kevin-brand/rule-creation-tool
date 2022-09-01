@@ -140,7 +140,7 @@ function sendRulesViaEmail(rules) {
                 document.querySelector('#sending-data-text').innerHTML = 'Data has been sent successfully. You can now close this site.'
             }
         }, (err) => {
-            alert(JSON.stringify(err));
+            alert('ERROR!' + JSON.stringify(err));
         });
 }
 
@@ -243,6 +243,7 @@ function pause(text, showQuitButton = false) {
         saveRules()
         pauseOverlay.classList.remove('hidden')
         clearInterval(updateTimerID)
+        return
     }
 
 

@@ -3,7 +3,7 @@
     "emailjsKey": "iLC-VgUQbWSLzZTdM",
     "serviceID": "default_service",
     "templateID": "template_9cihs1o",
-    "duration": 180,
+    "duration": 10,
     "features": [
         "CRIM",
         "ZN",
